@@ -1,6 +1,6 @@
 *.pyc
 *.egg-info
-media/
+media/pet/
 .idea
 *.sqlite3
 local_settings.py
