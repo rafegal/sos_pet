@@ -6,7 +6,6 @@ media/pet/
 local_settings.py
 *.log
 .Python
-media/
 eggs/
 .eggs/
 lib/
