@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <style>
+    body{        
+        color: white; 
+        font-weight: bold;
+        background-image: url("https://www.vedovatipisos.com.br/wp-content/uploads/2015/12/ra%C3%A7as-de-cachorro.jpg");
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-4">  
+  <form action="submit", method="POST">{% csrf_token %}
+    <div class="row" style="margin-left:35%; margin-top:10%">
+        <div class="col-4">
+          <h2 class="text-center">SOS PET</h2>
+          <div class="form-group">
+            <label for="username">Usuário:</label>
+            <input type="username" class="form-control" id="username" placeholder="E-mail" name="username" size="10">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Senha:</label>
+            <input type="password" class="form-control" id="pwd" placeholder="Senha" name="password">
+          </div>
+                  {% if messages %}
+                      {% for message in messages %}
+                          <div class="alert alert-danger">{{ message }}</div>
+                      {% endfor %}
+
+                  {% endif %}
+          <button type="submit" class="btn btn-primary">Entrar</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

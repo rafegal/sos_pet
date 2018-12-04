@@ -1,0 +1,50 @@
+{% extends "model-page.html" %}
+
+{% block content %}
+    <h1 class="text-center">Detalhes do Pet</h1>
+    <br>
+  <!-- Ini Modal -->
+  <div class="modal fade" id="modal_confirm">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Deseja realmente excluir?</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>        
+        <!-- Modal body -->
+        <div class="modal-body text-right">
+            <a href="/pet/delete/{{ pet.id }}/">
+                <button type="button" class="btn btn-danger">EXCLUIR</button>
+            </a>
+            <button type="button" class="btn btn-default" data-dismiss="modal">CANCELAR</button>
+        </div>               
+      </div>
+    </div>
+  </div>
+  <!-- End Modal -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div style="border-color: green; border-style: solid; width: 356px; height: 300px;">
+                    <img src="{{ pet.photo.url }}" alt="Norway" width="350" height="263" style="margin-top: 16px;"> 
+                </div>
+                <br>
+            </div>
+            <div class="col-sm-8">
+                <p>{{ pet.description }}</p>
+                <h4>Contato</h4>                     
+                <p><b>Tel.: </b>{{ pet.phone }}</p> 
+                <p><b>E-mail: </b>{{ pet.email }}</p>
+                {% if request.user == pet.user %}
+                    <a href="/pet/register/?id={{ pet.id }}">
+                        <button type="button" class="btn btn-primary">Alterar</button>
+                    </a>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_confirm">Excluir</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>  
+    <br>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "model-page.html" %}
+
+{% block content %}
+    <h1 class="text-center">Cadastrar Pet para adoção</h1>
+    <br>
+    <form enctype="multipart/form-data" action="submit", method="POST">{% csrf_token %}
+        <div class="container">
+            <input type="number" class="form-control" name="pet_id" value="{{ pet.id }}" hidden>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" value="{{ pet.email }}">
+            </div>
+            <div class="form-group">
+                <label for="phone">Telefone:</label>
+                <input type="tel" class="form-control" name="phone" value="{{ pet.phone }}">
+            </div>   
+            <div class="form-group">
+                <label for="city">Cidade:</label>
+                <input type="text" class="form-control" name="city" value="{{ pet.city }}">
+            </div>    
+            <div class="form-group">
+                <label for="description">Descrição:</label>
+                <textarea class="form-control" rows="5" name="description">{{ pet.description }}</textarea>
+            </div>        
+            <div class="form-group">
+                <a href="/media/{{ pet.photo }}" target="_blank">Foto atual</a>
+                <input type="file" class="form-control-file border" name="file" accept="image/*">
+            </div>
+            <button type="submit" class="btn btn-primary">
+                {% if pet %}
+                    Alterar
+                {% else %}
+                    Cadastrar
+                {% endif %}
+            </button>
+        </div>
+      </form>
+      <br>
+
+
+{% endblock %}
