@@ -1,6 +1,7 @@
 *.pyc
 *.egg-info
 media/pet/
+core/migrations
 .idea
 *.sqlite3
 local_settings.py
