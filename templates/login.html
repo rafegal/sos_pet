@@ -1,46 +1,125 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  <style>
-    body{        
-        color: white; 
-        font-weight: bold;
-        background-image: url("https://www.vedovatipisos.com.br/wp-content/uploads/2015/12/ra%C3%A7as-de-cachorro.jpg");
-    }
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" >
+    <title>SOS PET</title>
 </head>
-<body>
-<div class="container mt-4">  
-  <form action="submit", method="POST">{% csrf_token %}
-    <div class="row" style="margin-left:35%; margin-top:10%">
-        <div class="col-4">
-          <h2 class="text-center">SOS PET</h2>
-          <div class="form-group">
-            <label for="username">Usuário:</label>
-            <input type="username" class="form-control" id="username" placeholder="E-mail" name="username" size="10">
-          </div>
-          <div class="form-group">
-            <label for="pwd">Senha:</label>
-            <input type="password" class="form-control" id="pwd" placeholder="Senha" name="password">
-          </div>
+
+<body class="d-flex flex-column">
+  <div class="sidenav">
+         <div class="login-main-text">
+            <h1>SOS PET<h1><h4>Nos ajude a salvar mais Pets!</h4>  
+         </div>
+      </div>
+      <div class="main">
+         <div class="col-md-6 col-sm-12">
+            <div class="login-form">
+               <form action="submit", method="POST">{% csrf_token %}
+                  <div class="form-group">
+                     <label>Usuário</label>
+                     <input type="text" class="form-control" placeholder="Usuário" name="username">
+                  </div>
+                  <div class="form-group">
+                     <label>Senha</label>
+                     <input type="password" class="form-control" placeholder="Senha" name="password">
+                  </div>
                   {% if messages %}
                       {% for message in messages %}
                           <div class="alert alert-danger">{{ message }}</div>
                       {% endfor %}
-
                   {% endif %}
-          <button type="submit" class="btn btn-primary">Entrar</button>
+                  <button type="submit" class="btn btn-green">Login</button>                 
+               </form>
+            </div>
+         </div>
       </div>
-    </div>
-  </form>
-</div>
 
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+
+        .main-head{
+            height: 150px;
+            background: #FFF;    
+        }
+
+        .sidenav {
+            height: 100%;
+            background-color: #003300;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+        .main {
+            padding: 0px 10px;
+        }
+
+        @media screen and (max-height: 450px) {
+            .sidenav {padding-top: 15px;}
+        }
+
+        @media screen and (max-width: 450px) {
+            .login-form{
+                margin-top: 10%;
+            }
+
+            .register-form{
+                margin-top: 10%;
+            }
+        }
+
+        @media screen and (min-width: 768px){
+            .main{
+                margin-left: 40%; 
+            }
+
+            .sidenav{
+                width: 40%;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+            }
+
+            .login-form{
+                margin-top: 80%;
+            }
+
+            .register-form{
+                margin-top: 20%;
+            }
+        }
+
+        .login-main-text{
+            margin-top: 20%;
+            padding: 60px;
+            color: #fff;
+        }
+
+        .login-main-text h2{
+            font-weight: 300;
+        }
+
+        .btn-green {
+            background-color: #003300 !important;
+            color: #fff;
+            transition-duration: 0.4s;
+        }
+        .btn-green:hover {
+            background-color: green !important;
+            color: #fff;
+        }
+    </style>
 </body>
 </html>
