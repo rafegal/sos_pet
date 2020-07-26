@@ -1,2 +1,2 @@
-release: echo $GOOGLE_CREDENTIALS > /app/google-credentials.json
+release: echo $GOOGLE_CREDENTIALS > /tmp/google-credentials.json
 web: gunicorn sos_pet.wsgi --log-file -
