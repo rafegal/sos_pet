@@ -28,12 +28,12 @@ def set_pet(request):
             pet.phone = phone
             pet.city = city
             pet.description = description 
-            if file:
-                pet.photo = file
             pet.save()
     else:
         pet = Pet.objects.create(email=email, phone=phone, city=city, description=description,
-                                user=user, photo=file)
+                                user=user)
+    if file:
+        pet.upload_photo(file)
     url = '/pet/detail/{}/'.format(pet.id)
     return redirect(url)
 
@@ -65,6 +65,7 @@ def list_user_pets(request):
 def delete_pet(request, id):
     pet = Pet.objects.get(id=id)
     if pet.user == request.user:
+        pet.delete_photo()
         pet.delete()
     return redirect('/')
 

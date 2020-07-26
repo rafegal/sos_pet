@@ -20,7 +20,7 @@
                     <div class="col-sm-4">
                         <a href="../detail/{{ p.id }}">
                             <div class="polaroid">
-                                <img src="{{ p.photo.url }}" alt="Norway" style="width:100%">
+                                <img src="{{ p.get_photo }}" alt="Norway" style="width:100%">
                                 <div class="container">
                                     <p>{{ p.city }}</p>
                                 </div>

@@ -16,3 +16,6 @@ sdist/
 var/
 wheels/
 MANIFEST
+.venv
+.env
+staticfiles

@@ -12,9 +12,15 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 import dj_database_url
+from environs import Env
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+env = Env()
+env.read_env(f"{BASE_DIR}/.env", recurse=False)
+
+GCS_BUCKET_NAME = env.str('GOOGLE_CLOUD_STORAGE_BUCKET')
 
 
 # Quick-start development settings - unsuitable for production
@@ -24,7 +30,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "d11cr&8vh)9_76ryn_05x*)8e%*b=+blqb0f)d7a=0th9n#5pe"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["codesospet.herokuapp.com", "127.0.0.1"]
 
