@@ -27,7 +27,7 @@ GCS_BUCKET_NAME = env.str('GOOGLE_CLOUD_STORAGE_BUCKET')
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "d11cr&8vh)9_76ryn_05x*)8e%*b=+blqb0f)d7a=0th9n#5pe"
+SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
