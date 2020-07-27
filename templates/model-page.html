@@ -4,15 +4,35 @@
         {% block head %} {% endblock %}
         
         {% block style %}{% endblock %}
-       
-        {% include "model-header.html" %}
+    
     </head>
 
     <body>
-        {% block content %}{% endblock %}
+        <header>
+            {% include "model-header.html" %}
+        </header>
+        <main class="content" style="margin-top: 5%">
+            {% block content %}{% endblock %}
+        </main>
 
-        {% include "model-footer.html" %}
+        <footer>
+            {% include "model-footer.html" %}
+        </footer>
     </body>
   
 </html>
  
+ <style>
+    html, body {
+        height: 100%;
+    }
+
+    main {
+        flex: 1 0 auto;
+    }
+
+    footer {
+        flex-shrink: none;
+        margin-top: 2em;
+    }
+</style>
