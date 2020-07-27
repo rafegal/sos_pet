@@ -1,2 +1,2 @@
-release: echo $GOOGLE_CREDENTIALS > /tmp/google-credentials.json
+release: python manage.py migrate 
 web: gunicorn sos_pet.wsgi --log-file -
