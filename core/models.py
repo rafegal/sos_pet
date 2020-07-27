@@ -5,8 +5,9 @@ import uuid
 
 # Create your models here.
 
+
 class Pet(models.Model):
-    city = models.CharField(max_length=100)    
+    city = models.CharField(max_length=100)
     description = models.TextField()
     phone = models.CharField(max_length=11, null=True)
     email = models.EmailField(null=True, blank=True)
@@ -15,7 +16,7 @@ class Pet(models.Model):
     begin_date = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField(default=True)
     photo = models.CharField(max_length=1000)
-    
+
     def __str__(self):
         return str(self.id)
 
@@ -26,7 +27,7 @@ class Pet(models.Model):
     def upload_photo(self, photo):
         if self.photo:
             self.delete_photo()
-        photo_name = f'{photo}-{uuid.uuid4()}'
+        photo_name = f"{photo}-{uuid.uuid4()}"
         gcs = GoogleCloudStorage()
         gcs.save_file(photo, photo_name)
         self.photo = photo_name
@@ -35,9 +36,7 @@ class Pet(models.Model):
     def delete_photo(self):
         gcs = GoogleCloudStorage()
         gcs.delete_file(self.photo)
-            
-        
-
 
     class Meta:
-        db_table = 'pet_lost'
+        db_table = "pet_lost"
+
