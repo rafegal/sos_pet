@@ -19,3 +19,4 @@ MANIFEST
 .venv
 .env
 staticfiles
+google-credentials.json

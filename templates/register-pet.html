@@ -23,7 +23,7 @@
                 <textarea class="form-control" rows="5" name="description">{{ pet.description }}</textarea>
             </div>        
             <div class="form-group">
-                <a href="/media/{{ pet.photo }}" target="_blank">Foto atual</a>
+                <a href="{{ pet.get_photo }}" target="_blank">Foto atual</a>
                 <input type="file" class="form-control-file border" name="file" accept="image/*">
             </div>
             <button type="submit" class="btn btn-primary">
