@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import dj_database_url
 from environs import Env
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -32,7 +31,7 @@ SECRET_KEY = "d11cr&8vh)9_76ryn_05x*)8e%*b=+blqb0f)d7a=0th9n#5pe"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["codesospet.herokuapp.com", "127.0.0.1"]
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
@@ -51,7 +50,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -84,10 +82,12 @@ WSGI_APPLICATION = "sos_pet.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {}
-DATABASES["default"] = dj_database_url.config(
-    default=f"sqlite:///{os.path.join(BASE_DIR, 'db.sqlite3')}"
-)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 
 # Password validation
