@@ -17,7 +17,7 @@
     <div class="container">
             <div class="row">
                 {% for p in pet %}
-                    <div class="col-sm-4">
+                    <div class="col-sm-12 col-md-6 col-lg-4">
                         <a href="../detail/{{ p.id }}">
                             <div class="polaroid">
                                 <img src="{{ p.get_photo }}" alt="Norway" style="width:100%">
